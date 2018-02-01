@@ -1,28 +1,57 @@
-<h1>Your business</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To Do</title>
+</head>
+<body link="red">
 
-<%= link_to 'New business', new_business_path %><br>
-<%= link_to 'New list', new_list_path %>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+      <h1 class="navbar-brand mb-0">ToDo</h1>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="businesses/new">New business</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="lists/new">New list</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+       <a class="nav-link" <%= link_to 'Log out', destroy_user_session_path, :method => :delete %></a>
+    </li>
+  </ul>
+</nav>
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-sm-4">
+          <h1 class="lol">To Do lists</h1>
+        </div>
+      </div>
+      <h2 class="center">LOLOLOL</h2>
 
 
+<div class="row">
 <% @lists.each do |list| %>
-<table>
-
-<th><%= link_to "#{list.name}", list_path(list) %></th>
+    <div class="col-sm-4">
+      <table class = "table table-hover">
+        <th><%= link_to "#{list.name}", list_path(list) %></th>
    
-  <% list.businesses.each do |business| %>
-    <tr>
-      <td><%= business.name %></td>
-      <td><%= business.status %></td>
-      <td><%= business.priority %></td>
-      <td><%= business.description %></td>
-      <td><%= link_to 'Show', business_path(business) %></td>
-      <td><%= link_to 'Edit', edit_business_path(business) %></td>
-      <td><%= link_to 'Destroy', business_path(business),
+        <% list.businesses.each do |business| %>
+
+          <tr>
+            <td><%= link_to "#{business.name}", business_path(business) %></td>
+            <td><%= business.status %></td>
+            <td><%= business.priority %></td>
+            <td><%= business.description %></td>
+            <td><%= link_to image_tag("edit.png", size: "18x15"), edit_business_path(business) %></td>
+            <td><%= link_to image_tag("destroy.png", size: "18x15"), business_path(business),
                                   method: :delete,
                                   data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  <% end %>
-
-
-</table>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+<% end %>
+</div>
+</body>
+</html>
