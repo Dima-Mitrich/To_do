@@ -22,3 +22,25 @@
   <% end %>
 
 </table>
+
+
+<div id="myDIV" class="header">
+  <h2><%= @list.name %></h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+
+  <% @list.businesses.each do |business| %>
+
+  <li>
+    <%= business.name %>
+    <span class="close"> <%= link_to 'x', business_path(business),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+                      </span>
+  </li>
+
+  <% end %>
+</ul>

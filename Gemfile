@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap', '~> 4.0.0.beta3'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'devise', github: 'plataformatec/devise', ref: '83002017'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

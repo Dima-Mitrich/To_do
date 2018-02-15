@@ -5,29 +5,24 @@
 </head>
 <body link="red">
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-      <h1 class="navbar-brand mb-0">ToDo</h1>
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="businesses/new">New business</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="lists/new">New list</a>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
-       <a class="nav-link" <%= link_to 'Log out', destroy_user_session_path, :method => :delete %></a>
-    </li>
-  </ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="businesses">To Do</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="businesses/new">New bussines</a></li>
+        <li><a href="lists/new">New list</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a <%= link_to 'Log out', destroy_user_session_path, :method => :delete %></a></li>     
+      </ul>
+    </div>
+  </div>
 </nav>
-    <div id="main-container" class="container-fluid">
-      <div class="row">
-        <div id="sidebar" class="col-sm-4">
-          <h1 class="lol">To Do lists</h1>
-        </div>
-      </div>
-      <h2 class="center">LOLOLOL</h2>
 
 
 <div class="row">
@@ -35,7 +30,6 @@
     <div class="col-sm-4">
       <table class = "table table-hover">
         <th><%= link_to "#{list.name}", list_path(list) %></th>
-   
         <% list.businesses.each do |business| %>
 
           <tr>
